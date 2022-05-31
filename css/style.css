@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container.header {
+    min-height: 15vh;
+}
+
+.container.header > h1 {
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container.main {
+    height: 70vh;
+    background-color: aqua;
+}
+
+.card {
+    min-width: 500px;
+    min-height: 500px;
+    background-color: darkseagreen;
+}
+
+.container.footer {
+    min-height: 15vh;
+}
+
