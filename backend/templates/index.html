@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordly Weather</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="container header">
+      <h1>Worldy Weather</h1>
+    </div>
+  </header>
+  <main>
+    <div class="container main">
+      <div class="card">
+        <form name="get-weather" id="weather-form" method="get">
+          <input type="text" name="city" id="city" placeholder="Enter city name...">
+          <select name="countries" id="countries">
+            <option value="none" selected>Select country...</option>
+          </select>
+          <select name="states" id="states" class="visually-hidden">
+            <option value="none">Select state...</option>
+          </select>
+          <button type="submit">Get weather</button>
+
+          <!-- <input type="text" list="countries">
+          <datalist id="countries"></datalist> -->
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container footer">
+
+    </div>
+  </footer>
+
+
+  <!-- scripts -->
+  <script src="{{ url_for('static', filename='/js/script.js') }}"></script>
+</body>
+</html>
