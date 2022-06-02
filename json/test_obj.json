@@ -1,0 +1,44 @@
+{
+    "coord": {
+      "lon": 150.9569,
+      "lat": -33.7685
+    },
+    "weather": [
+      {
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 48.47,
+      "feels_like": 48.47,
+      "temp_min": 46.6,
+      "temp_max": 51.98,
+      "pressure": 1002,
+      "humidity": 62
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 1.99,
+      "deg": 295,
+      "gust": 7
+    },
+    "clouds": {
+      "all": 5
+    },
+    "dt": 1654017786,
+    "sys": {
+      "type": 2,
+      "id": 2004875,
+      "country": "AU",
+      "sunrise": 1654030337,
+      "sunset": 1654066554
+    },
+    "timezone": 36000,
+    "id": 2146305,
+    "name": "Toongabbie",
+    "cod": 200
+}

@@ -1,0 +1,37 @@
+coord lon
+coord lat
+weather main
+weather description
+main temp
+main feels_like
+main temp_min
+main temp_max
+main pressure
+main humidity
+main sea_level 
+main grnd_level
+visibility
+wind speed
+wind deg
+wind gust
+clouds all
+dt
+sys country
+sys sunrise
+sys sunset
+timezone
+id
+name
+
+
+coord
+weather
+main
+visibility
+wind
+clouds
+dt
+sys
+timezone
+id
+name

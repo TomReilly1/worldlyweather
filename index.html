@@ -8,37 +8,72 @@
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script src="https://kit.fontawesome.com/210d020666.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
     <div class="container header">
       <h1>Worldy Weather</h1>
+      <ul id="search-city">
+        <li>
+          <input type="text" name="city" id="city" placeholder="Enter city name...">
+        </li>
+        <li>
+          <select name="countries" id="countries">
+            <option value="none" selected>Select country...</option>
+          </select>
+          <select name="states" id="states" disabled>
+            <option value="none">Select state...</option>
+          </select>
+        </li>
+        <!-- <li>
+
+        </li> -->
+        <li>
+          <button id="submit-btn"><span>Get Weather</span></button>
+        </li>
+      </ul>
+      
     </div>
   </header>
   <main>
     <div class="container main">
-      <div class="card">
-        <form action="#" method="get">
-          <input type="text" name="city" id="city" placeholder="Enter city name...">
-          <select name="countries" id="countries">
-            <option value="" disabled selected>Select your option</option>
-            <option value="none">None</option>
-          </select>
-
-          <!-- <input type="text" list="countries">
-          <datalist id="countries"></datalist> -->
-        </form>
+      <div id="result-card" class="card">
+        <div class="city country coord">
+          <h2 id="result-city">City, Country</h2>
+          <span id="result-coord">000.00, 00.00</span>
+        </div>
+        <div class="temp img desc">
+          <div id="temp-container">
+            <span id="result-temp">0</span>
+            <span id="result-feels-like">0</span>
+          </div>
+          <div>
+            <img id="result-img" src="https://openweathermap.org/img/wn/01d@2x.png" alt="image icon of weather">
+            <span id="result-desc">Weather Description</span>
+          </div>
+        </div>
+        <div>
+          <span id="result-cloud-cover">0%</span>
+          <span id="result-humidity">0%</span>
+          <span id="result-wind-speed">0 mph</span>
+        </div>
+        <div>
+          <span></span>
+        </div>
       </div>
     </div>
   </main>
   <footer>
     <div class="container footer">
-
+      <span>Created by Thomas Reilly</span>
+      <span><i class="fa-brands fa-github fa-2xl"></i></span>
     </div>
   </footer>
 
 
   <!-- scripts -->
   <script src="./js/script.js"></script>
+  
 </body>
 </html>
