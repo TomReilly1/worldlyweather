@@ -12,24 +12,24 @@ async function getCodes(url) {
 }
 
 
-async function getCordinates(url){
-    const res = await fetch(url);
-    const arr = await res.json();
-    const obj = arr[0];
-    const lat = obj['lat'];
-    const lon = obj['lon'];
+// async function getCordinates(url){
+//     const res = await fetch(url);
+//     const arr = await res.json();
+//     const obj = arr[0];
+//     const lat = obj['lat'];
+//     const lon = obj['lon'];
 
-    getWeather(lat, lon);
-}
+//     getWeather(lat, lon);
+// }
 
 
-async function getWeather(lat, lon) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${geoApiKey}`
-    const res = await fetch(url);
-    const obj = await res.json();
-    console.log(obj);
-    generateWeatherElements(obj);
-}
+// async function getWeather(lat, lon) {
+//     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${geoApiKey}`
+//     const res = await fetch(url);
+//     const obj = await res.json();
+//     console.log(obj);
+//     generateWeatherElements(obj);
+// }
 
 
 function fillSelectElements(elemId, codeList) {
@@ -113,17 +113,50 @@ function main() {
         else {
             let geoApiUrl;
 
+            // if (countryVal === 'US') {
+            //     geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityVal},${stateVal},${countryVal}&appid=${geoApiKey}`;
+            // }
+            // else {
+            //     geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityVal},${countryVal}&appid=${geoApiKey}`;
+            // }
+
             if (countryVal === 'US') {
-                geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityVal},${stateVal},${countryVal}&appid=${geoApiKey}`;
+                const vars = [cityVal, countryVal, stateVal];
             }
             else {
-                geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityVal},${countryVal}&appid=${geoApiKey}`;
+                const vars = [cityVal, countryVal];
+                getCordinates(`http://localhost:3333/api/${cityVal.toLowerCase()}/${countryVal.toLowerCase()}`)
+
+                // fetch(`http://localhost:3333/api/${cityVal}/${countryVal}`)
+                // .then(response => console.log(response))
+                // .then(data => console.log(data));
             }
 
-            getCordinates(geoApiUrl);
+            // getCordinates(geoApiUrl);
         }
     })
     
+}
+
+
+async function getCordinates(url) {
+    const res = await fetch(url);
+    const arr = await res.json();
+    const obj = arr;
+    // console.log('SCRIPT 148\n' + res);
+
+    // const arr = await res.json();
+    // console.log(json());
+
+
+    console.log('RES\n' + res);
+    console.log('ARR\n' + arr);
+    const lat = obj[lat];
+    const lon = obj[lon];
+    console.log(lat + ' / ' + lon);
+    // const lat = obj['lat'];
+    // const lon = obj['lon'];
+
 }
 
 
