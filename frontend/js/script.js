@@ -2,7 +2,7 @@ const cityInputElem = document.getElementById('city');
 const countrySelElem = document.getElementById('countries');
 const stateSelElem = document.getElementById('states');
 const submitBtnElem = document.getElementById('submit-btn');
-const apiIp = '66.228.59.198';
+// const apiIp = '66.228.59.198';
 
 
 async function getCodes(url) {
