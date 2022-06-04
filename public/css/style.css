@@ -23,11 +23,16 @@ body {
     min-height: 25vh;
 }
 
-.container.header > h1 {
+nav {
+    background-color: #00000005;
+    width: 100%;
+}
+
+nav h1 {
     width: fit-content;
     margin: 0 auto;
     padding: 1rem 0;
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -251,11 +256,13 @@ body {
 a {
     text-decoration: unset;
     color: white;
-    transition: color 0.5s;
+    transition: color 0.5s, background-color 0.5s;
+    border-radius: 100%;
 }
 
 a:hover {
     color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(150, 150, 150, 0.5);
 }
 
 .container.footer > span {
@@ -267,8 +274,9 @@ a:hover {
     flex-direction: column;
     justify-content: center;
 }
-.container.footer > span > i {
-    /* height: 45px; */
+
+.container.footer > span > a {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
-
-

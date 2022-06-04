@@ -11,25 +11,26 @@ async function getCodes(url) {
     return response.json();
 }
 
+async function getCoordinates(url) {
+    console.log('getCoordinates() function');
 
-// async function getCordinates(url){
-//     const res = await fetch(url);
-//     const arr = await res.json();
-//     const obj = arr[0];
-//     const lat = obj['lat'];
-//     const lon = obj['lon'];
+    const res = await fetch(url);
+    const obj = await res.json();
+    const lat = await obj['lat'];
+    const lon = await obj['lon'];
 
-//     getWeather(lat, lon);
-// }
+    getWeather(lat, lon);
+}
 
+async function getWeather(lat, lon) {
+    console.log('getWeather() function');
 
-// async function getWeather(lat, lon) {
-//     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${geoApiKey}`
-//     const res = await fetch(url);
-//     const obj = await res.json();
-//     console.log(obj);
-//     generateWeatherElements(obj);
-// }
+    const res = await fetch(`http://localhost:3333/api/weather/${lat}/${lon}`);
+    const obj = await res.json();
+
+    generateWeatherElements(obj);
+}
+
 
 
 function fillSelectElements(elemId, codeList) {
@@ -42,7 +43,6 @@ function fillSelectElements(elemId, codeList) {
         selectElem.appendChild(optionElem);
     }
 }
-
 
 function generateWeatherElements(obj) {
     const cityName = obj['name'];
@@ -68,6 +68,7 @@ function generateWeatherElements(obj) {
 }
 
 
+
 function main() {
     getCodes('./json/countries.json')
     .then(data => {
@@ -90,9 +91,9 @@ function main() {
     })
 
     submitBtnElem.addEventListener('click', () => {
-        let cityVal = cityInputElem.value;
-        let countryVal = countrySelElem.options[countrySelElem.selectedIndex].value
-        let stateVal =  stateSelElem.options[stateSelElem.selectedIndex].value
+        const cityVal = cityInputElem.value.toLowerCase();
+        const countryVal = countrySelElem.options[countrySelElem.selectedIndex].value.toLowerCase();
+        const stateVal =  stateSelElem.options[stateSelElem.selectedIndex].value.toLowerCase();
 
 
         if (countryVal === 'US' && stateVal === 'none') {
@@ -111,54 +112,16 @@ function main() {
             alert('City value is null or undefined');
         }
         else {
-            let geoApiUrl;
-
-            // if (countryVal === 'US') {
-            //     geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityVal},${stateVal},${countryVal}&appid=${geoApiKey}`;
-            // }
-            // else {
-            //     geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityVal},${countryVal}&appid=${geoApiKey}`;
-            // }
-
             if (countryVal === 'US') {
-                const vars = [cityVal, countryVal, stateVal];
+                getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${stateVal}/${countryVal}`)
             }
             else {
-                const vars = [cityVal, countryVal];
-                getCordinates(`http://localhost:3333/api/${cityVal.toLowerCase()}/${countryVal.toLowerCase()}`)
-
-                // fetch(`http://localhost:3333/api/${cityVal}/${countryVal}`)
-                // .then(response => console.log(response))
-                // .then(data => console.log(data));
+                getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${countryVal}`)
             }
-
-            // getCordinates(geoApiUrl);
         }
     })
-    
 }
 
-
-async function getCordinates(url) {
-    const res = await fetch(url);
-    const arr = await res.json();
-    const obj = arr;
-    // console.log('SCRIPT 148\n' + res);
-
-    // const arr = await res.json();
-    // console.log(json());
-
-
-    console.log('RES\n' + res);
-    console.log('ARR\n' + arr);
-    const lat = obj[lat];
-    const lon = obj[lon];
-    console.log(lat + ' / ' + lon);
-    // const lat = obj['lat'];
-    // const lon = obj['lon'];
-
-}
 
 
 main();
-

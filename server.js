@@ -16,72 +16,78 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
-app.get('/api/:city/:country', async (req, res) => {
-    res.header("Content-Type",'application/json');
-    // console.log(req);
-    // console.log(res);
+
+app.get('/api/geo/:city/:country', async (req, res) => {
     const city = req.params.city;
     const country = req.params.country;
-    console.log(city);
-    console.log(country);
-    
-
     const coordUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
 
-    console.log(coordUrl);
 
-    async function getCordinates(url) {
+    async function fetchCoordApi(url) {
+        console.log('fetchCoordApi() function');
+
         const response = await fetch(url);
         const arr = await response.json();
         const obj = arr[0];
-        const lat = obj['lat'];
-        const lon = obj['lon'];
-
-        console.log('SCRIPT 40\n' + JSON.stringify(obj));
 
         return JSON.stringify(obj);
     }
 
+    const sendObj = await fetchCoordApi(coordUrl);
 
-
-    const sendObj = await getCordinates(coordUrl);
-    
-    // await console.log('SENDOBJ 48\n' + sendObj);
-
-    // for (let i in sendObj) {
-    //     console.log(i + ': ' + sendObj[i]);
-    // }
-
-    res.send(sendObj);
-
-
-
-    // const coordinates = fetch(coordUrl)
-    // .then((response) => response.json())
-    // .then((data) => {
-    //     return data;
-    // });
-  
-    // const sendCoord = () => {
-    //     coordinates.then((a) => {
-    //         console.log(a);
-
-    //     });
-    // };
-    
-    // sendCoord();
-  
-
-
-
+    return res.send(sendObj);
 })
 
-app.get('/api/:city/:state/:country', (req, res) => {
-    // console.log(req);
-    // console.log(res);
-    res.send('Got a POST request')
-    // console.log(`http://api.openweathermap.org/geo/1.0/direct?q=${cityVal},${countryVal}&appid=${geoApiKey}`);
+
+app.get('/api/geo/:city/:state/:country', async (req, res) => {
+    const city = req.params.city;
+    const state = req.params.state;
+    const country = req.params.country;
+    const coordUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
+
+
+    async function fetchCoordApi(url) {
+        console.log('fetchCoordApi() function');
+
+        const response = await fetch(url);
+        const arr = await response.json();
+        const obj = arr[0];
+
+        return JSON.stringify(obj);
+    }
+
+    const sendObj = await fetchCoordApi(coordUrl);
+
+    return res.send(sendObj);
 })
+
+
+app.get('/api/weather/:lat/:lon', async (req, res) => {
+    const lat = req.params.lat;
+    const lon = req.params.lon;
+	const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.OPEN_WEATHER_API_KEY}`;
+
+
+    async function fetchWeatherApi(url) {
+        console.log('fetchWeatherApi() function')
+
+        const response = await fetch(url);
+        const object = await response.json();
+
+        console.log('SCRIPT 63');
+        console.log(response);
+        console.log(object);
+
+        return JSON.stringify(object);
+    }
+
+    const weatherObj = await fetchWeatherApi(weatherUrl);
+
+    return res.send(weatherObj);
+})
+
+
 
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => console.log(`Server started on http://localhost:${port}`));
