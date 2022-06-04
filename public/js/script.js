@@ -2,7 +2,6 @@ const cityInputElem = document.getElementById('city');
 const countrySelElem = document.getElementById('countries');
 const stateSelElem = document.getElementById('states');
 const submitBtnElem = document.getElementById('submit-btn');
-const geoApiKey = 'OPEN_WEATHER_API_KEY';
 
 
 
