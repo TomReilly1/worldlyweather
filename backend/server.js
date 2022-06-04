@@ -6,9 +6,8 @@ const dotenv = require('dotenv').config();
 const app = express();
 
 
-app.set('view engine', 'ejs');
-
 app.use(cors());
+
 
 
 app.get('/', (req, res) => {
@@ -89,7 +88,7 @@ app.get('/api/weather/:lat/:lon', async (req, res) => {
 
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.EXPRESS_PORT || 3000;
 
 const server = app.listen(port, () => console.log(`Server started on port http://localhost:${port}`));
 
