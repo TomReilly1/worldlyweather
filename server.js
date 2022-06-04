@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 app.get('/api/geo/:city/:country', async (req, res) => {
     const city = req.params.city;
     const country = req.params.country;
-    const coordUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
+    const coordUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
 
 
     async function fetchCoordApi(url) {
@@ -43,7 +43,7 @@ app.get('/api/geo/:city/:state/:country', async (req, res) => {
     const city = req.params.city;
     const state = req.params.state;
     const country = req.params.country;
-    const coordUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
+    const coordUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
 
 
     async function fetchCoordApi(url) {
