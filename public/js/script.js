@@ -96,7 +96,7 @@ function main() {
         const stateVal =  stateSelElem.options[stateSelElem.selectedIndex].value.toLowerCase();
 
 
-        if (countryVal === 'US' && stateVal === 'none') {
+        if (countryVal === 'us' && stateVal === 'none') {
             alert('You must pick a state');
         }
         else if (countryVal === 'none') {
@@ -112,13 +112,11 @@ function main() {
             alert('City value is null or undefined');
         }
         else {
-            if (countryVal === 'US') {
+            if (countryVal === 'us') {
                 getCoordinates(`http://localhost:3000/api/geo/${cityVal}/${stateVal}/${countryVal}`);
-                // getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${stateVal}/${countryVal}`);
             }
             else {
-                // getCoordinates(`https://localhost:3000/api/geo/${cityVal}/${countryVal}`);
-                getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${countryVal}`);
+                getCoordinates(`https://localhost:3000/api/geo/${cityVal}/${countryVal}`);
             }
         }
     })

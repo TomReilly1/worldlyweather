@@ -20,6 +20,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/geo/:city/:country', async (req, res) => {
+    console.log('Geo non-US route working');
+
     const city = req.params.city;
     const country = req.params.country;
     const coordUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${country}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
@@ -41,6 +43,8 @@ app.get('/api/geo/:city/:country', async (req, res) => {
 })
 
 app.get('/api/geo/:city/:state/:country', async (req, res) => {
+    console.log('Geo US route working');
+
     const city = req.params.city;
     const state = req.params.state;
     const country = req.params.country;
@@ -90,4 +94,10 @@ app.get('/api/weather/:lat/:lon', async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`Server started on port http://localhost:${port}`));
+const server = app.listen(port, () => console.log(`Server started on port http://localhost:${port}`));
+
+server.on('clientError', (err, socket) => {
+    console.error(err);
+    socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
+  
