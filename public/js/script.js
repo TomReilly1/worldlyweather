@@ -113,12 +113,12 @@ function main() {
         }
         else {
             if (countryVal === 'US') {
-                // getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${stateVal}/${countryVal}`);
-                getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${stateVal}/${countryVal}`);
+                getCoordinates(`https://localhost:3000/api/geo/${cityVal}/${stateVal}/${countryVal}`);
+                // getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${stateVal}/${countryVal}`);
             }
             else {
-                // getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${stateVal}/${countryVal}`);
-                getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${countryVal}`);
+                getCoordinates(`https://localhost:3000/api/geo/${cityVal}/${stateVal}/${countryVal}`);
+                // getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${countryVal}`);
             }
         }
     })
