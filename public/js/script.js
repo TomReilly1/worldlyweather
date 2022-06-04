@@ -23,8 +23,9 @@ async function getCoordinates(url) {
 
 async function getWeather(lat, lon) {
     console.log('getWeather() function');
-
-    const res = await fetch(`http://localhost:3333/api/weather/${lat}/${lon}`);
+    
+    // const res = await fetch(`https://localhost:3000/api/weather/${lat}/${lon}`);
+    const res = await fetch(`https://worldlyweather.herokuapp.com/api/weather/${lat}/${lon}`);
     const obj = await res.json();
 
     generateWeatherElements(obj);
@@ -112,10 +113,12 @@ function main() {
         }
         else {
             if (countryVal === 'US') {
-                getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${stateVal}/${countryVal}`)
+                // getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${stateVal}/${countryVal}`);
+                getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${stateVal}/${countryVal}`);
             }
             else {
-                getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${countryVal}`)
+                // getCoordinates(`http://localhost:3333/api/geo/${cityVal}/${stateVal}/${countryVal}`);
+                getCoordinates(`https://worldlyweather.herokuapp.com/api/geo/${cityVal}/${countryVal}`);
             }
         }
     })
