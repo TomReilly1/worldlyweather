@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const dotenv = require('dotenv').config();
+
 
 const app = express();
 
@@ -11,11 +13,11 @@ app.use(cors());
 app.use(express.static('public'));
 
 
+
 app.get('/', (req, res) => {
     console.log('Root route working');
     res.render('index');
 })
-
 
 app.get('/api/geo/:city/:country', async (req, res) => {
     const city = req.params.city;
@@ -38,7 +40,6 @@ app.get('/api/geo/:city/:country', async (req, res) => {
     return res.send(sendObj);
 })
 
-
 app.get('/api/geo/:city/:state/:country', async (req, res) => {
     const city = req.params.city;
     const state = req.params.state;
@@ -60,7 +61,6 @@ app.get('/api/geo/:city/:state/:country', async (req, res) => {
 
     return res.send(sendObj);
 })
-
 
 app.get('/api/weather/:lat/:lon', async (req, res) => {
     const lat = req.params.lat;
@@ -90,4 +90,4 @@ app.get('/api/weather/:lat/:lon', async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`Server started on http://localhost:${port}`));
+app.listen(port, () => console.log(`Server started on port http://localhost:${port}`));
