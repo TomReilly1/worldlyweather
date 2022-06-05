@@ -2,7 +2,7 @@ const cityInputElem = document.getElementById('city');
 const countrySelElem = document.getElementById('countries');
 const stateSelElem = document.getElementById('states');
 const submitBtnElem = document.getElementById('submit-btn');
-const ip = 'localhost';
+const ip = '66.228.59.198';
 
 
 async function getCodes(url) {
@@ -112,7 +112,7 @@ function main() {
         }
         else {
             if (countryVal === 'us') {
-                getCoordinates(`http://${ip}/api/geo/${cityVal}/${stateVal}/${countryVal}`);
+                getCoordinates(`https://${ip}/api/geo/${cityVal}/${stateVal}/${countryVal}`);
             }
             else {
                 getCoordinates(`https://${ip}/api/geo/${cityVal}/${countryVal}`);
