@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv').config();
+// const dotenv = require('dotenv').config();
 
 
 const app = express();
@@ -88,12 +88,8 @@ app.get('/api/weather/:lat/:lon', async (req, res) => {
 
 
 
-const port = process.env.EXPRESS_PORT || 3000;
+const port = 3000;
 
-const server = app.listen(port, () => console.log(`Server started on port http://localhost:${port}`));
 
-server.on('clientError', (err, socket) => {
-    console.error(err);
-    socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
-});
-  
+app.listen(port, () => console.log(`Server started on port http://localhost:${port}`));
+
