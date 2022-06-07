@@ -18,6 +18,11 @@ async function getCoordinates(url) {
     const lat = await obj['lat'];
     const lon = await obj['lon'];
 
+    console.log('RESPONSE:\n' + res);
+    console.log('OBJECT\n' + obj);
+    console.log('LATITUDE:\n' + lat);
+    console.log('LONGITUDE\n' + lon);
+
     getWeather(lat, lon);
 }
 
