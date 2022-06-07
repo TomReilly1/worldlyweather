@@ -2,7 +2,7 @@ const cityInputElem = document.getElementById('city');
 const countrySelElem = document.getElementById('countries');
 const stateSelElem = document.getElementById('states');
 const submitBtnElem = document.getElementById('submit-btn');
-const ip = '66.228.59.198';
+const ip = 'https://worldlyweatherapi.herokuapp.com';
 
 
 async function getCodes(url) {
@@ -24,7 +24,7 @@ async function getCoordinates(url) {
 async function getWeather(lat, lon) {
     console.log('getWeather() function');
     
-    const res = await fetch(`https://${ip}/api/weather/${lat}/${lon}`);
+    const res = await fetch(`${ip}/api/weather/${lat}/${lon}`);
     const obj = await res.json();
 
     generateWeatherElements(obj);
@@ -111,11 +111,13 @@ function main() {
             alert('City value is null or undefined');
         }
         else {
+            let urlReadyCity = cityVal.replaceAll(' ', '+');
+
             if (countryVal === 'us') {
-                getCoordinates(`https://${ip}/api/geo/${cityVal}/${stateVal}/${countryVal}`);
+                getCoordinates(`${ip}/api/geo/${urlReadyCity}/${stateVal}/${countryVal}`);
             }
             else {
-                getCoordinates(`https://${ip}/api/geo/${cityVal}/${countryVal}`);
+                getCoordinates(`${ip}/api/geo/${urlReadyCity}/${countryVal}`);
             }
         }
     })
